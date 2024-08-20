@@ -1,0 +1,18 @@
+.name_details_wrapper {
+    padding: 0 200px;
+}
+
+.name_details {
+    background-color: #ffffff;
+    padding: 40px;
+    max-height: 100vh;
+}
+
+.name_details h1{
+    margin-bottom: 48px;
+}
+
+.name_details .meaning h3 {
+    font-weight: bold;
+    margin-bottom: 24px;
+}

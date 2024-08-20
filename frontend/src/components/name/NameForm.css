@@ -1,0 +1,42 @@
+.name_form_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name_form {
+    background-color: #ffffff;
+    max-height: 100vh;
+    min-width: 600px;
+}
+
+.name_form div {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.name_form div label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.name_form div input {
+    padding: 8px;
+}
+
+.name_form div textarea {
+    padding: 8px;
+    resize: none;
+}
+
+.name_form div button {
+    padding: 16px 8px;
+    background-color: rebeccapurple;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.name_form div button:hover {
+    background-color: rgb(86, 32, 140);
+}
