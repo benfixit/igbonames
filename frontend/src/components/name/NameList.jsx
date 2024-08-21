@@ -1,4 +1,6 @@
 import useFetch from "../../hooks/useFetch";
+import Loading from "../Loading";
+import Error from "../Error";
 import Layout from "../Layout";
 import "./NameList.css";
 
@@ -6,13 +8,15 @@ const NameList = () => {
   const { data, loading, error } = useFetch("http://127.0.0.1:8000/names");
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
-  if (error) {
-    return <div>Error</div>
+  console.log('da ::: ', data)
+
+  if (error || !data) {
+    return <Error />
   }
-  
+
   return (
     <Layout>
       <section className="names_wrapper">

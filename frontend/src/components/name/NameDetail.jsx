@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import Loading from "../Loading";
+import Error from "../Error";
 import useFetch from "../../hooks/useFetch";
 import "./NameDetail.css";
 
@@ -7,14 +9,14 @@ const NameDetail = () => {
   const { data, loading, error } = useFetch(`http://127.0.0.1:8000/names/${slug}`);
 
   if (loading) {
-    return <div>Loading...</div>
-  }
-
-  if (error || !data.name) {
-    return <div>Error</div>
+    return <Loading />
   }
 
   console.log('da ::: ', data)
+
+  if (error || !data.name) {
+    return <Error />
+  }
 
   return (
     <section className="name_details_wrapper">
