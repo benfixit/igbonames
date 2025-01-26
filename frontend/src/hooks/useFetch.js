@@ -19,6 +19,8 @@ const useFetch = (url, method = "GET") => {
             });
           }
 
+          console.log("Response >>> ", response)
+
           let data = await response.json();
           setState({
             data,

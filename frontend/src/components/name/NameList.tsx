@@ -5,7 +5,7 @@ import Layout from "../Layout";
 import "./NameList.css";
 
 const NameList = () => {
-  const { data, loading, error } = useFetch("http://127.0.0.1:8000/names");
+  const { data, loading, error } = useFetch(`${process.env.BASE_URL}/names`);
 
   if (loading) {
     return <Loading />

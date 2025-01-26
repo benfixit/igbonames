@@ -9,13 +9,13 @@ const Layout = ({ children }) => {
         <nav>
             <ul className="left">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
+                {/* <li><a href="#">About</a></li> */}
                 <li><a href="/names/new">Submit an entry</a></li>
             </ul>
             <ul className="right">
                 <li><a href="/names">Names</a></li>
-                <li><a href="#">Towns</a></li>
-                <li><a href="#">Food</a></li>
+                {/* <li><a href="#">Towns</a></li>
+                <li><a href="#">Food</a></li> */}
             </ul>
         </nav>
         <main>
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
                 <li><a href="#"><i className="fa fa-instagram"></i></a></li>
             </ul>
             <ul className="links">
-                <li><a href="#">Volunteer</a></li>
+                {/* <li><a href="#">Volunteer</a></li> */}
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </footer>

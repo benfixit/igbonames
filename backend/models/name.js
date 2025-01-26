@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const NameSchema = mongoose.Schema(
-    {
+const NameSchema = Schema({
         title: { type: String, required: true },
         meaning: { type: String, required: true },
         poster: { type: String, required: true },
@@ -10,12 +9,8 @@ const NameSchema = mongoose.Schema(
         morphology: { type: String, required: false },
         search_hits: { type: Number, required: false, default: 0 },
         last_seen: { type: String, default: Date.now(), required: false }
-    },
-    {
-        timestamps: true
-    }
-);
+    }, { timestamps: true });
 
-const Name = mongoose.model("names", NameSchema);
+const Name = model("names", NameSchema);
 
 module.exports = Name;
