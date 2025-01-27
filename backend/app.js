@@ -48,6 +48,16 @@ app.get("/names", async (req, res) => {
     }
 });
 
+app.get("/names/:slug", async (req, res) => {
+    try {
+        const { slug } = req.params;
+        const result = await Name.find({ slug });
+        res.status(200).json({ name: isEmpty(result) ? {} : result[0] })
+    } catch(error) {
+        res.status(500).json({ message: error.message })
+    }
+});
+
 app.listen(PORT, () => {
     console.log("App listening on PORT: ", PORT);
 });

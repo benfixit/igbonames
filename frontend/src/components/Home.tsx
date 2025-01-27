@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../Home.css";
 import { Name } from "../typings";
@@ -36,8 +37,7 @@ const Home = () => {
             <ul>
                 {searchResult.map((name: Name) => (
                     <li key={name._id}>
-                    <h4>{name.title}</h4>
-                    <p>{name.meaning}</p>
+                        <Link to={`/names/${name.slug}`}>{name.title}</Link>
                     </li>
                 ))}
             </ul>

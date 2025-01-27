@@ -7,7 +7,8 @@ import { Name } from "../../typings";
 
 const NameDetail = () => {
   const { slug } = useParams();
-  const { data, loading, error } = useFetch(`${process.env.BASE_URL}/names/${slug}`);
+  
+  const { data, loading, error } = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/names/${slug}`);
 
   if (loading) {
     return <Loading />

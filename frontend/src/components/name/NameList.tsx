@@ -4,6 +4,7 @@ import Error from "../Error";
 import "./NameList.css";
 import { Name } from "../../typings";
 import { useTheme } from "../../store/ThemeContext";
+import { Link } from "react-router-dom";
 
 const NameList = () => {
   const { data, loading, error } = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/names`);
@@ -26,8 +27,7 @@ const NameList = () => {
           {/** @ts-ignore */}
             {data.names.map((name: Name) => (
               <li key={name._id}>
-                <h4>{name.title}</h4>
-                <p>{name.meaning}</p>
+                <Link to={`/names/${name.slug}`}>{name.title}</Link>
               </li>
             ))}
         </ul>
