@@ -3,9 +3,8 @@ import "./NameForm.css";
 
 const NameForm = () => {
   return (
-    <Layout>
-        <section class="name_form_wrapper">
-        <form method="POST" class="name_form">
+        <section className="name_form_wrapper">
+        <form method="POST" className="name_form">
             <div>
                 <label>Title <em>(required)</em></label>
                 <input name="title" type="text" required />
@@ -27,7 +26,6 @@ const NameForm = () => {
             </div>
         </form>
     </section>
-    </Layout>
   )
 }
 

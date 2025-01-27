@@ -1,5 +1,4 @@
 .content {
-    background-color: #ffffff;
     padding: 40px 200px;
     display: flex;
     flex-direction: column;
@@ -12,11 +11,11 @@
     margin-bottom: 32px;
 }
 
-.content .input_wrapper {
+.content .search_wrapper {
     position: relative;
 }
 
-.content .input_wrapper #entry_input {
+.content .search_wrapper #entry_input {
     width: 600px;
     height: 48px;
     padding: 16px 24px;
@@ -26,7 +25,7 @@
     outline: rebeccapurple;
 }
 
-.content .input_wrapper button {
+.content .search_wrapper button {
     position: absolute;
     top: 0;
     right: 16px;
@@ -39,6 +38,19 @@
     padding: 8px;
     height: 40px;
     width: 40px;
+}
+
+.content ul {
+    padding: 16px;
+    position: absolute;
+    width: 600px;
+    z-index: 1;
+
+    li {
+        list-style: none;
+        padding: 16px 8px;
+        border-bottom: thin solid #cccccc;
+    }
 }
 
 
@@ -62,15 +74,15 @@
 }
 
 .content .groupings .letters button {
+    background-color: #ffffff;
+    border: thin solid rebeccapurple;
+    color: rebeccapurple;
+    cursor: pointer;
     flex: 1;
     height: 44px;
-    cursor: pointer;
-    border: transparent;
-    background-color: rebeccapurple;
-    color: #ffffff;
     margin: 0 1px;
 }
 
 .content .groupings .letters button:hover {
-    background-color: rgb(86, 32, 140);
+    border: medium solid rebeccapurple;
 }

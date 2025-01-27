@@ -1,11 +1,12 @@
+import { ReactNode } from 'react';
 import '../Layout.css'
 
 const year = (new Date()).getFullYear();
-const websiteName = "Everything Igbo";
+const websiteName = import.meta.env.WEBSITE_NAME;
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <div className="wrapper">
         <nav>
             <ul className="left">
                 <li><a href="/">Home</a></li>
@@ -34,7 +35,7 @@ const Layout = ({ children }) => {
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </footer>
-    </>
+    </div>
   )
 }
 

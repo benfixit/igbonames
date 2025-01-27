@@ -1,41 +1,57 @@
 import { useEffect, useState } from "react";
-import { debounce } from "lodash";
-import Layout from "./Layout";
+import axios from "axios";
 import "../Home.css";
-import useFetch from "../hooks/useFetch";
+import { Name } from "../typings";
+import { useTheme } from "../store/ThemeContext";
 
 
 const Home = () => {
     const [searchWord, setSearchWord] = useState("");
+    const [searchResult, setSearchResult] = useState<Array<Name>>([]);
+    const { theme, changeTheme } = useTheme();
+
+    console.log("Theme value ::: ", theme, "home");
 
     useEffect(() => {
-        const { data, loading, error } = useFetch(`${process.env.BASE_URL}/search`, "POST");
+        const findWord = async () => {
+            const response = await axios.post(`${import.meta.env.VITE_APP_BASE_URL}/names/search`, { searchWord });
+            setSearchResult(response.data.names ?? []);
+        }
 
+        findWord();
+    changeTheme("dark")
     }, [searchWord]);
 
-    const searchFxn = (event) => {
+    const searchFxn = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchWord(event.target.value);
     }
 
     return (
-        <Layout>
-            <section className="content">
-                <h1>Everything Igbo</h1>
-                <div className="input_wrapper">
-                    <input type="text" name="entry_input" id="entry_input" placeholder="Type any Igbo word here and press 'Enter'..." value={searchWord} onChange={searchFxn} />
-                    <button><i className="fa fa-search"></i></button>
-                </div>
-                <div className="groupings">
-                    <h4>Search alphabetically:</h4>
-                    <div className="letters">
-                        {Array.from({ length: 26 }, (_, num) => {
-                            console.log(num);
-                            return <button key={num}>{String.fromCharCode(num + 97)}</button>
-                        })}
-                    </div>
-                </div>
-            </section>
-        </Layout>
+        <section className="content">
+        <h1>Everything Igbo</h1>
+        <div className="search_wrapper">
+            <input type="text" name="entry_input" id="entry_input" placeholder="Type any Igbo word here and press 'Enter'..." value={searchWord} onChange={searchFxn} />
+            <button><i className="fa fa-search"></i></button>
+            {searchResult.length > 0 && (
+            <ul>
+                {searchResult.map((name: Name) => (
+                    <li key={name._id}>
+                    <h4>{name.title}</h4>
+                    <p>{name.meaning}</p>
+                    </li>
+                ))}
+            </ul>
+        )}
+        </div>
+        <div className="groupings">
+            <h4>Search alphabetically:</h4>
+            <div className="letters">
+                {Array.from({ length: 26 }, (_, num) => {
+                    return <button key={num}>{String.fromCharCode(num + 97)}</button>
+                })}
+            </div>
+        </div>
+    </section>
     )
 }
 

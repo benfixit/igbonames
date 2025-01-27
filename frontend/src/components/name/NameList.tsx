@@ -1,28 +1,31 @@
 import useFetch from "../../hooks/useFetch";
 import Loading from "../Loading";
 import Error from "../Error";
-import Layout from "../Layout";
 import "./NameList.css";
+import { Name } from "../../typings";
+import { useTheme } from "../../store/ThemeContext";
 
 const NameList = () => {
-  const { data, loading, error } = useFetch(`${process.env.BASE_URL}/names`);
+  const { data, loading, error } = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/names`);
+
+      const { theme } = useTheme();
+  
+      console.log("Theme value ::: ", theme, "name list");
 
   if (loading) {
     return <Loading />
   }
-
-  console.log('da ::: ', data)
 
   if (error || !data) {
     return <Error />
   }
 
   return (
-    <Layout>
       <section className="names_wrapper">
         <ul>
-            {data.names.map(name => (
-              <li>
+          {/** @ts-ignore */}
+            {data.names.map((name: Name) => (
+              <li key={name._id}>
                 <h4>{name.title}</h4>
                 <p>{name.meaning}</p>
               </li>
@@ -32,7 +35,6 @@ const NameList = () => {
             1, 2, 3
         </div>
       </section>
-    </Layout>
   )
 }
 

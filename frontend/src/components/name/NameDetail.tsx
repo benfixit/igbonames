@@ -3,40 +3,42 @@ import Loading from "../Loading";
 import Error from "../Error";
 import useFetch from "../../hooks/useFetch";
 import "./NameDetail.css";
+import { Name } from "../../typings";
 
 const NameDetail = () => {
   const { slug } = useParams();
-  const { data, loading, error } = useFetch(`http://127.0.0.1:8000/names/${slug}`);
+  const { data, loading, error } = useFetch(`${process.env.BASE_URL}/names/${slug}`);
 
   if (loading) {
     return <Loading />
   }
 
-  console.log('da ::: ', data)
-
-  if (error || !data.name) {
+  if (error || !data) {
     return <Error />
   }
+
+  //@ts-ignore
+  const name: Name = data.name;
 
   return (
     <section className="name_details_wrapper">
         <div className="name_details">
-            <h1>{data.name.title}</h1>
+            <h1>{name.title}</h1>
 
             <div className="meaning">
-                <h3>Meaning of {data.name.title}</h3>
-                <p>{data.name.meaning}</p>
+                <h3>Meaning of {name.title}</h3>
+                <p>{name.meaning}</p>
             </div>
 
-            {data.name.morphology && (
+            {name.morphology && (
               <div className="morphology">
-                <p>{data.name.morphology}</p>
+                <p>{name.morphology}</p>
               </div>
             )}
 
-            {data.name.variants && (
+            {name.variants && (
               <div className="variants">
-                <p>{data.name.variants}</p>
+                <p>{name.variants}</p>
               </div>
             )}
         </div>
