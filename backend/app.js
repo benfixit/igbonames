@@ -21,12 +21,13 @@ app.get("", (req, res) => {
 });
 
 app.post("/names/create", async (req, res) => {
-    try {
-        const name = await Name.create(req.body);
-        res.status(200).json(name)
-    } catch(error) {
-        res.status(500).json({ message: error.message })
-    }
+    console.log(req.body)
+    // try {
+    //     const name = await Name.create(req.body);
+    //     res.status(200).json(name)
+    // } catch(error) {
+    //     res.status(500).json({ message: error.message })
+    // }
 });
 
 app.post("/names/search", async (req, res) => {
