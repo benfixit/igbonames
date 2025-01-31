@@ -1,13 +1,16 @@
 .wrapper {
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
 nav {
-    display: flex;
-    padding: 0 20px;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    flex: 1;
     height: 80px;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 nav ul {
@@ -20,15 +23,18 @@ nav ul li {
     margin: 0 10px;
 }
 
+main {
+    flex: 8;
+}
+
 footer {
-    display: flex;
-    padding: 16px 20px;
-    justify-content: space-between;
+    align-items: center;
     border-top: thin solid #cccccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    max-height: 50px;
+    padding: 0 20px;
 }
 
 footer ul {

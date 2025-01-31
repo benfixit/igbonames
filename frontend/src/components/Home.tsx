@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../Home.css";
+
+import { useNames } from "../store/NamesContext";
 import { Name } from "../typings";
-import { useTheme } from "../store/ThemeContext";
+
+import "../Home.css";
 
 
 const Home = () => {
     const [searchWord, setSearchWord] = useState("");
     const [searchResult, setSearchResult] = useState<Array<Name>>([]);
-    const { theme, changeTheme } = useTheme();
+    const { names } = useNames();
 
-    console.log("Theme value ::: ", theme, "home");
+    console.log("name >>> ", names)
 
     useEffect(() => {
         const findWord = async () => {
@@ -20,7 +22,6 @@ const Home = () => {
         }
 
         findWord();
-    changeTheme("dark")
     }, [searchWord]);
 
     const searchFxn = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +30,6 @@ const Home = () => {
 
     return (
         <section className="content">
-        <h1>Everything Igbo</h1>
         <div className="search_wrapper">
             <input type="text" name="entry_input" id="entry_input" placeholder="Type any Igbo word here and press 'Enter'..." value={searchWord} onChange={searchFxn} />
             <button><i className="fa fa-search"></i></button>
@@ -44,12 +44,10 @@ const Home = () => {
         )}
         </div>
         <div className="groupings">
-            <h4>Search alphabetically:</h4>
-            <div className="letters">
-                {Array.from({ length: 26 }, (_, num) => {
-                    return <button key={num}>{String.fromCharCode(num + 97)}</button>
-                })}
-            </div>
+            <h4>Number of names:</h4>
+            <ul className="letters">
+                {names.map(name => <li><Link to={`/names/${name.slug}`}>{name.title}</Link></li>)}
+            </ul>
         </div>
     </section>
     )

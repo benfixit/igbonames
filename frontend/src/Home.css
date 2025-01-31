@@ -13,6 +13,7 @@
 
 .content .search_wrapper {
     position: relative;
+    flex: 1;
 }
 
 .content .search_wrapper #entry_input {
@@ -61,6 +62,8 @@
     align-items: center;
     margin-top: 160px;
     width: 100%;
+    border: thin solid red;
+    flex: 5;
 }
 
 .content .groupings h4 {
@@ -69,8 +72,8 @@
 }
 
 .content .groupings .letters {
+    column-count: 5;
     width: 100%;
-    display: flex;
 }
 
 .content .groupings .letters button {

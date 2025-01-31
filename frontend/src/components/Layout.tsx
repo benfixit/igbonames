@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import '../Layout.css'
 
 const year = (new Date()).getFullYear();
@@ -9,14 +10,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className="wrapper">
         <nav>
             <ul className="left">
-                <li><a href="/">Home</a></li>
-                {/* <li><a href="#">About</a></li> */}
-                <li><a href="/names/new">Submit an entry</a></li>
+                <h1><Link to={"/"}>Everything Igbo</Link></h1>
             </ul>
             <ul className="right">
-                <li><a href="/names">Names</a></li>
-                {/* <li><a href="#">Towns</a></li>
-                <li><a href="#">Food</a></li> */}
+                <li><Link to={"/names/new"}>Submit an entry</Link></li>
             </ul>
         </nav>
         <main>

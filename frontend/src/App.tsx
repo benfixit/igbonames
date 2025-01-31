@@ -1,26 +1,27 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import NameList from "./components/name/NameList";
 import NameDetail from "./components/name/NameDetail";
 import NameForm from "./components/name/NameForm";
 import NotFound from "./components/NotFound";
-import { ThemeProvider } from "./store/ThemeContext";
 import Layout from "./components/Layout";
+import { ThemeProvider } from "./store/ThemeContext";
+import { NamesProvider } from "./store/NamesContext";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Layout>
+      <NamesProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/names" element={<NameList />} />
-            <Route path="/names/new" element={<NameForm />} />
-            <Route path="/names/:slug" element={<NameDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/names/new" element={<NameForm />} />
+              <Route path="/names/:slug" element={<NameDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
-      </Layout>
+      </NamesProvider>
     </ThemeProvider>
   )
 }

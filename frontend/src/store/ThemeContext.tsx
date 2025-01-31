@@ -9,7 +9,6 @@ export const ThemeContext = createContext<ThemeContextType>({ theme: "", changeT
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setTheme] = useState("light");
-    console.log("I got called");
 
     const changeTheme = useCallback((theme: string) => {
         setTheme(theme);
