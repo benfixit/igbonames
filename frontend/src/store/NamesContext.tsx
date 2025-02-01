@@ -14,8 +14,7 @@ export const NamesProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const fetchNames = async () => {
-            const response = await axios.post(`${import.meta.env.VITE_APP_BASE_URL}/names`);
-            console.log("Names ::: ", response.data.names);
+            const response = await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/names`);
             setNames(response.data.names ?? []);
         }
 
