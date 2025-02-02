@@ -1,20 +1,30 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useCallback, useContext, useMemo, useState } from "react";
+import { isEmpty } from "lodash";
 
-type ThemeContextType = {
-    theme: string;
-    changeTheme: Dispatch<SetStateAction<string>>;
+enum THEME {
+    light = "light",
+    dark = "dark"
 }
 
-export const ThemeContext = createContext<ThemeContextType>({ theme: "", changeTheme: () => {} });
+type ThemeContextType = {
+    theme: keyof typeof THEME;
+    toggleTheme: Dispatch<SetStateAction<void>>;
+}
+
+export const ThemeContext = createContext<ThemeContextType>({ theme: THEME.light, toggleTheme: () => {} });
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setTheme] = useState("light");
+    const cachedTheme = localStorage.getItem("theme");
+    
+    const [theme, setTheme] = useState(THEME.light);
 
-    const changeTheme = useCallback((theme: string) => {
-        setTheme(theme);
+    const toggleTheme = useCallback(() => {
+        setTheme(theme === THEME.light ? THEME.dark : THEME.light);
+
+        // save the value to local storage
     }, []);
 
-    const contextValue = useMemo(() => ({ theme, changeTheme }), [theme, changeTheme]);
+    const contextValue = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
     // @ts-ignore
     return <ThemeContext.Provider value={contextValue}>
@@ -22,4 +32,12 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     </ThemeContext.Provider>
 }
 
-export const useTheme = () => useContext<ThemeContextType>(ThemeContext);
+export const useTheme = () => {
+    const context = useContext<ThemeContextType>(ThemeContext);
+
+    if (isEmpty(context)) {
+        throw new Error("useTheme must be used within a ThemeProvider");
+    }
+
+    return context;
+};

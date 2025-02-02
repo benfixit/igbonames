@@ -1,3 +1,15 @@
+.light {
+  --background-color: #ffffff;
+  --text-color: #990000;
+  --border-color: #cccccc;
+}
+
+.dark {
+  --background-color: #333333;
+  --text-color: #ffffff;
+  --border-color: #222222;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +31,13 @@ body {
 
 a {
   text-decoration: none;
-  color: rebeccapurple;
 }
 
 button {
   border: none;
   border-radius: 5px;
+}
+
+li {
+  list-style: none;
 }

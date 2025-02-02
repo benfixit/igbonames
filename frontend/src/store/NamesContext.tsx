@@ -14,6 +14,7 @@ export const NamesProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const fetchNames = async () => {
+            console.log("Getting called");
             const response = await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/names`);
             setNames(response.data.names ?? []);
         }

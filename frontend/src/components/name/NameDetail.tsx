@@ -1,25 +1,14 @@
 import { useParams } from "react-router-dom";
-import Loading from "../Loading";
-import Error from "../Error";
-import useFetch from "../../hooks/useFetch";
-import "./NameDetail.css";
 import { Name } from "../../typings";
+import { useNames } from "../../store/NamesContext";
+
+import "./NameDetail.css";
 
 const NameDetail = () => {
   const { slug } = useParams();
-  
-  const { data, loading, error } = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/names/${slug}`);
+  const { names } = useNames();
 
-  if (loading) {
-    return <Loading />
-  }
-
-  if (error || !data) {
-    return <Error />
-  }
-
-  //@ts-ignore
-  const name: Name = data.name;
+  const name = names.find(name => name.slug === slug) as Name;
 
   return (
     <section className="name_details_wrapper">

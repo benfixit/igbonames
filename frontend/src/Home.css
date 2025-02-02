@@ -4,42 +4,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
 
-.content .groupings {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 160px;
-    width: 100%;
-    flex: 5;
-}
+    .names {
+        margin-top: 20px;
+        column-count: 5;
+        width: 100%;
 
-.content .groupings h4 {
-    margin-bottom: 16px;
-    font-weight: lighter;
-}
+        li {
+            list-style: none;
 
-.content .groupings .letters {
-    column-count: 5;
-    width: 100%;
-
-    li {
-        list-style: none;
+            a {
+                color: var(--text-color);
+            }
+        }
     }
-}
-
-.content .groupings .letters button {
-    background-color: #ffffff;
-    border: thin solid rebeccapurple;
-    color: rebeccapurple;
-    cursor: pointer;
-    flex: 1;
-    height: 44px;
-    margin: 0 1px;
-}
-
-.content .groupings .letters button:hover {
-    border: medium solid rebeccapurple;
 }

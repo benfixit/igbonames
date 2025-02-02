@@ -1,4 +1,5 @@
 .wrapper {
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -8,100 +9,126 @@ nav {
     align-items: center;
     display: flex;
     flex: 1;
-    height: 80px;
+    min-height: 80px;
     justify-content: space-between;
     padding: 0 20px;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-evenly;
-}
+nav {
+    .left, .right {
+        display: flex;
+        justify-content: space-evenly;
 
-nav ul li {
-    list-style: none;
-    margin: 0 10px;
-}
+        li {
+            margin: 0 10px;
+        }
+    }
 
-main {
-    flex: 8;
+    .left {
+        h1 {
+            a {
+                color: var(--text-color);
+            }
+        }
+    }
 
-    .content {
-        padding: 40px 200px;
+    .center {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        .search_wrapper {
+    
+        .search {
             position: relative;
             flex: 1;
-        }
-        
-        .search_wrapper .entry_input {
-            width: 600px;
-            height: 48px;
-            padding: 16px 24px;
-            border-radius: 24px;
-            font-size: 14px;
-            border-color: rebeccapurple;
-            outline: rebeccapurple;
-        }
-        
-        .search_wrapper button {
-            position: absolute;
-            top: 0;
-            right: 16px;
-            bottom: 0;
-            margin: auto;
-            background-color: transparent;
-            color: #000000;
-            padding: 16px;
-            cursor: pointer;
-            padding: 8px;
-            height: 40px;
-            width: 40px;
-        }
-        
-        .search_result {
-            padding: 16px;
-            position: absolute;
-            width: 600px;
-            z-index: 1;
-        
-            li {
-                list-style: none;
-                padding: 16px 8px;
-                border-bottom: thin solid #cccccc;
+    
+            .entry_input {
+                width: 600px;
+                height: 48px;
+                padding: 16px 24px;
+                border-radius: 24px;
+                font-size: 14px;
+                border-color: var(--border-color);
+                outline: var(--border-color);
             }
+    
+            button {
+                position: absolute;
+                top: 0;
+                right: 16px;
+                bottom: 0;
+                margin: auto;
+                background-color: transparent;
+                color: #000000;
+                padding: 16px;
+                cursor: pointer;
+                padding: 8px;
+                height: 40px;
+                width: 40px;
+            }
+    
+            .result {
+                padding: 16px;
+                position: absolute;
+                width: 600px;
+                z-index: 1;
+            
+                li {
+                    list-style: none;
+                    padding: 16px 8px;
+                    border-bottom: thin solid var(--border-color);
+                }
+            }
+        }
+    }
+
+    .right {
+        li {
+            a {
+                color: var(--text-color);
+            }
+        }
+        button {
+            cursor: pointer;
         }
     }
 }
 
+
+main {
+    flex: 8;
+    padding: 0 0 48px 0;
+}
+
 footer {
     align-items: center;
-    border-top: thin solid #cccccc;
+    border-top: thin solid var(--border-color);
     display: flex;
     flex: 1;
     justify-content: space-between;
     max-height: 50px;
     padding: 0 20px;
-}
 
-footer ul {
-    display: flex;
-    list-style: none;
-}
+    ul {
+        display: flex;
+        list-style: none;
+    }
 
-footer .copyright {
-    font-size: 14px;
-    margin-left: 10px;
-}
+    .copyright {
+        font-size: 14px;
+        margin-left: 10px;
+    }
 
-footer .socials li {
-    margin: 0 12px;
-}
+    .socials {
+        li {
+            margin: 0 12px;
+        }
+    }
 
-footer .links li {
-    margin: 0 12px;
+    .links {
+        li {
+            margin: 0 12px;
+        }
+    }
+    
 }
