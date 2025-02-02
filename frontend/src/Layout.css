@@ -48,7 +48,6 @@ nav {
                 padding: 16px 24px;
                 border-radius: 24px;
                 font-size: 14px;
-                border-color: var(--border-color);
                 outline: var(--border-color);
             }
     
@@ -83,6 +82,9 @@ nav {
     }
 
     .right {
+        display: flex;
+        align-items: center;
+
         li {
             a {
                 color: var(--text-color);
@@ -90,6 +92,13 @@ nav {
         }
         button {
             cursor: pointer;
+            padding: 0;
+            background-color: transparent;
+
+            svg {
+                fill: var(--fill-color);
+                background-color: var(--background-color);
+            }
         }
     }
 }
@@ -117,17 +126,26 @@ footer {
     .copyright {
         font-size: 14px;
         margin-left: 10px;
+        color: var(--text-color);
     }
 
     .socials {
         li {
             margin: 0 12px;
+
+            a {
+                color: var(--text-color);
+            }
         }
     }
 
     .links {
         li {
             margin: 0 12px;
+
+            a {
+                color: var(--text-color);
+            }
         }
     }
     

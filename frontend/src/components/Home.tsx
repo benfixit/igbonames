@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { useNames } from "../store/NamesContext";
-import { useTheme } from "../store/ThemeContext";
 
 import "../Home.css";
 
 
 const Home = () => {
     const { names } = useNames();
-    const { theme } = useTheme();
 
     return (
         <section className="content">

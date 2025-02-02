@@ -1,28 +1,28 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useCallback, useContext, useMemo, useState } from "react";
 import { isEmpty } from "lodash";
-
-enum THEME {
-    light = "light",
-    dark = "dark"
-}
+import { THEME } from "../typings";
 
 type ThemeContextType = {
     theme: keyof typeof THEME;
     toggleTheme: Dispatch<SetStateAction<void>>;
 }
 
+const LOCAL_STORAGE_KEY = "theme";
+
 export const ThemeContext = createContext<ThemeContextType>({ theme: THEME.light, toggleTheme: () => {} });
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const cachedTheme = localStorage.getItem("theme");
-    
-    const [theme, setTheme] = useState(THEME.light);
+    const item = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const cachedTheme = item ? JSON.parse(item) : THEME.light;
+    const [theme, setTheme] = useState(cachedTheme);
 
     const toggleTheme = useCallback(() => {
-        setTheme(theme === THEME.light ? THEME.dark : THEME.light);
+        const newTheme = theme === THEME.light ? THEME.dark : THEME.light;
+        setTheme(newTheme);
 
         // save the value to local storage
-    }, []);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTheme));
+    }, [theme, setTheme]);
 
     const contextValue = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 

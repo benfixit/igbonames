@@ -1,7 +1,9 @@
 import React from "react";
 import slugify from "slugify";
-import "./NameForm.css";
 import axios from "axios";
+
+import "./NameForm.css";
+
 
 const NameForm = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

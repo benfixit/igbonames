@@ -10,3 +10,8 @@ export type Name = {
     slug: string;
     variants: string;
 }
+
+export enum THEME {
+    light = "light",
+    dark = "dark"
+}

@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Name } from "../typings";
+import { isEmpty } from "lodash";
+import Loading from "../components/Loading";
 
 
 type NamesContextType = {
@@ -14,7 +16,6 @@ export const NamesProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const fetchNames = async () => {
-            console.log("Getting called");
             const response = await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/names`);
             setNames(response.data.names ?? []);
         }
@@ -23,6 +24,10 @@ export const NamesProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const contextValue = useMemo(() => ({ names }), [names]);
+
+    if (isEmpty(names)) {
+        return <Loading />
+    }
 
     // @ts-ignore
     return <NamesContext.Provider value={contextValue}>
