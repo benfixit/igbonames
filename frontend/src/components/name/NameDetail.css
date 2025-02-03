@@ -1,17 +1,17 @@
 .name_details_wrapper {
+    color: var(--text-color);
+    min-height: 100vh;
     padding: 0 200px;
 }
 
 .name_details {
-    background-color: #ffffff;
-    padding: 40px;
-}
-
-.name_details h1{
-    margin-bottom: 48px;
-}
-
-.name_details .meaning h3 {
-    font-weight: bold;
-    margin-bottom: 24px;
+    h1{
+        margin-bottom: 48px;
+    }
+    
+    .meaning {
+        h3 {
+            margin-bottom: 24px;
+        }
+    }
 }

@@ -36,7 +36,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </ul>
             <div className="center">
                 <div className="search">
-                    <input type="text" name="entry_input" className="entry_input" placeholder="Type any Igbo word here and press 'Enter'..." value={searchWord} onChange={searchFxn} />
+                    <input type="text" name="entry_input" className="entry_input" autoComplete="off" placeholder="Type any Igbo word here and press 'Enter'..." value={searchWord} onChange={searchFxn} />
                     <button><i className="fa fa-search"></i></button>
                     {searchResult.length > 0 && (
                         <ul className="result">

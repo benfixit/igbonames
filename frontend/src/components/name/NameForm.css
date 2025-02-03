@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .name_form {
-    background-color: #ffffff;
     min-width: 600px;
 }
 
@@ -13,6 +13,7 @@
     padding: 12px;
     display: flex;
     flex-direction: column;
+    /* border: thin solid red; */
 }
 
 .name_form div label {
@@ -21,21 +22,31 @@
 }
 
 .name_form div input {
-    padding: 8px;
+    border: none;
+    background-color: var(--background-color);
+    border-bottom: thin solid var(--border-color);
+    color: var(--text-color);
+    outline: none;
+    padding: 16px 8px;
 }
 
 .name_form div textarea {
-    padding: 8px;
+    background-color: var(--background-color);
+    border: none;
+    border-bottom: thin solid var(--border-color);
+    color: var(--text-color);
+    outline: none;
+    padding: 16px 8px;
     resize: none;
 }
 
 .name_form div button {
-    padding: 16px 8px;
-    background-color: rebeccapurple;
-    color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     cursor: pointer;
+    padding: 16px 8px;
 }
 
 .name_form div button:hover {
-    background-color: rgb(86, 32, 140);
+    /* background-color: rgb(86, 32, 140); */
 }
